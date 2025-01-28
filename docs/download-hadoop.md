@@ -31,14 +31,14 @@ O comando deve exibir uma versão do Java 8.
 
 ---
 
-## 3. Instalação do SSH
+## 3. Instalação do OpenSSH
 
-O SSH é essencial para a comunicação entre os nós do cluster Hadoop.
+O OpenSSH é essencial para a comunicação entre os nós do cluster Hadoop.
 
 ```bash
-sudo apt install ssh -y
+sudo apt install openssh-server -y
 ```
-Teste a instalação do SSH:
+Teste a instalação do OpenSSH:
 ```bash
 ssh localhost
 ```
@@ -142,11 +142,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 ---
 
-</br>
-</br>
-</br>
-
 ## Referências
 
-1. **Tutorial Instalación Hadoop 3.3.6 en Ubuntu 24.04**. Gabriel Florit, [YouTube](https://www.youtube.com/watch?v=R7O3FKMg2GQ). Acesso em: 26/11/2025.
-2. **Apache Hadoop 3.3.6 Installation on Ubuntu 22.04**. Abhik Dey, [Medium](https://medium.com/@abhikdey06/apache-hadoop-3-3-6-installation-on-ubuntu-22-04-14516bceec85). Acesso em: 26/11/2025.
+1. **Tutorial Instalación Hadoop 3.3.6 en Ubuntu 24.04**. Gabriel Florit, [YouTube](https://www.youtube.com/watch?v=R7O3FKMg2GQ). Acesso em: 2 dias atrás.
+2. **Apache Hadoop 3.3.6 Installation on Ubuntu 22.04**. Abhik Dey, [Medium](https://medium.com/@abhikdey06/apache-hadoop-3-3-6-installation-on-ubuntu-22-04-14516bceec85). Acesso em: 2 dias atrás.
