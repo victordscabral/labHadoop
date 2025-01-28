@@ -43,7 +43,7 @@ Teste a instalação do OpenSSH:
 ssh localhost
 ```
 ```bash
-sudo systemclt status ssh
+sudo systemctl status ssh
 ```
 ---
 
