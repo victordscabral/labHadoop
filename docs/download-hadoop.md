@@ -119,7 +119,7 @@ Edite o arquivo `~/.bashrc`:
 ```bash
 nano ~/.bashrc
 ```
-**Reajuste** as seguintes linhas, de acordo com o seu caminho:
+**Adicione no final do arquivo** e **reajuste** as seguintes linhas, de acordo com o seu caminho:
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export HADOOP_HOME=/home/jose-hadoop/Downloads/hadoop
