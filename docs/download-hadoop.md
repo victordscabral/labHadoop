@@ -27,7 +27,7 @@ Verifique a instalação:
 ```bash
 java -version
 ```
-O comando deve exibir uma versão do Java 8.
+O comando deve exibir uma versão do Java 8, como por exemplo `openjdk version "1.8.0_432"`.
 
 ---
 
@@ -106,7 +106,7 @@ Dentro dela faça a instalação do hadoop:
    ```bash
    tar -xvzf hadoop-3.3.6.tar.gz
    ```
-3. Renomeie a pasta extraída (opcional):
+3. Renomeie a pasta extraída (opcional, mas facilita na configuração):
    ```bash
    mv hadoop-3.3.6 hadoop
    ```
@@ -119,7 +119,7 @@ Edite o arquivo `~/.bashrc`:
 ```bash
 nano ~/.bashrc
 ```
-**Adicione no final do arquivo** e **reajuste** as seguintes linhas, de acordo com o seu caminho:
+**Adicione no final do arquivo** e **reajuste** as seguintes linhas, de acordo com o seu caminho, lembre-se de substiruir o `jose-hadoop` pelo seu:
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export HADOOP_HOME=/home/jose-hadoop/Downloads/hadoop
@@ -141,10 +141,11 @@ Configure o Java no arquivo `hadoop-env.sh`:
 ```bash
 nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 ```
-Procure e edite a linha `export JAVA_HOME`, colocando:
+Procure e edite a linha `export JAVA_HOME`, descomentando ela e colocando:
 ```bash
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
+Desse jeito mesmo, **SEM** o export antes do JAVA_HOME.
 
 ---
 
@@ -157,6 +158,8 @@ cd hadoop/
 ```bash
 mkdir -p /home/jose-hadoop/Downloads/hadoop/hadoopdata/hdfs/{namenode,datanode}
 ```
+Obs:. Lembre-se de substiruir o `jose-hadoop` pelo seu.
+
 
 Agora Iremos configurar os arquivos:
 
@@ -203,6 +206,8 @@ Configure de acordo com o hostname do seu sistema:
     </property>
 </configuration>
 ```
+Obs:. Lembre-se de substiruir o `jose-hadoop` pelo seu.
+
 Salve e feche o arquivo.
 
 </br>
@@ -228,6 +233,8 @@ Configure de acordo com o hostname do seu sistema:
    </property>
 </configuration>
 ```
+Obs:. Lembre-se de substiruir o `jose-hadoop` pelo seu.
+
 Salve e feche o arquivo.
 
 </br>
