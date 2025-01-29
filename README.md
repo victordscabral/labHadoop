@@ -1,8 +1,9 @@
 # PSPD_LabClusterHadoop
 
-**Disciplina**: FGA0244 - Programação para Sistemas Paralelos e Distribuídos (PSPD)  
-**Turma**: T01 (2024.2 - 24T23)  
-**Atividade**: Laboratório Hadoop
+- **Disciplina**: FGA0244 - Programação para Sistemas Paralelos e Distribuídos (PSPD)  
+- **Turma**: T01 (2024.2 - 24T23) 
+- **Professor**: Fernando William Cruz
+- **Atividade**: Laboratório Hadoop
 
 ## Alunos Participantes
 - **Heitor Marques Simões Barbosa**: 202016462  
