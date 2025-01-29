@@ -5,11 +5,11 @@
 **Atividade**: Laboratório Hadoop
 
 ## Alunos Participantes
-- **Heitor Marques Simões Barbosa**: 202016462 
+- **Heitor Marques Simões Barbosa**: 202016462  
 - **José Luís Ramos Teixeira**: 190057858  
 - **Pablo Christianno Silva Guedes**: 200042416  
 - **Philipe de Sousa Barros**: 170154319  
-- **Victor de Souza Cabral**: 190038900
+- **Victor de Souza Cabral**: 190038900  
 
 </br>
 </br>
@@ -31,7 +31,7 @@ Mais detalhes podem ser encontrados no documento oficial do trabalho: [Atividade
 
 Este projeto utiliza a versão **Hadoop 3.3.6** no sistema operacional **Ubuntu 24.04.1 LTS**. Embora o Hadoop funcione bem em versões anteriores do Ubuntu, como 20.04 e 22.04, a versão **Java 8** é obrigatória para garantir compatibilidade.
 
-Confira o guia de instalação detalhado: [Download Hadoop - tutorial](docs/download-hadoop.md).
+Confira o guia de instalação detalhado: [Guia de Instalação do Hadoop](docs/download-hadoop.md).
 
 ---
 
@@ -41,7 +41,9 @@ O cluster será composto por:
 
 - **Nó Mestre**: Computador do aluno responsável (Ubuntu 24.04).
 - **Workers**: Computadores dos colegas do grupo, com configurações compatíveis com o Hadoop.
-- **Rede Local**: Configuração preferencial via cabo (Ethernet Gigabit) para otimizar a comunicação entre os nós e testes de desempenho.
+- **Rede Local**: Configuração via cabo utilizando um **Switch Fast Ethernet SF 800** para otimizar a comunicação entre os nós.
+
+Mais detalhes sobre a configuração da rede podem ser encontrados aqui: [Configuração de Rede](docs/configs-rede.md).
 
 ---
 
@@ -52,6 +54,9 @@ Serão realizados os seguintes testes no cluster Hadoop:
 - **Desempenho**: Medição do tempo de execução da aplicação WordCount com diferentes números de nós workers ativos.
 - **Tolerância a falhas**: Simulação de cenários adversos com remoção e adição de nós durante a execução da aplicação.
 - **Monitoramento**: Utilização das interfaces web do Hadoop para monitorar o estado do cluster e os serviços submetidos.
+
+Para um roteiro detalhado de testes, acesse: [Testes no Hadoop](docs/testes-hadoop.md).  
+Para testes no cluster em execução, acesse: [Testes no Cluster Hadoop](docs/testes-hadoop-cluster.md).
 
 ---
 
