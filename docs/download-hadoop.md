@@ -51,8 +51,8 @@ sudo systemctl status ssh
 
 Crie um novo usuário para executar os serviços do Hadoop, vamos padronizar **(no nosso trabalho)** para ser o nome inicial de cada aluno, definindo a senha com o nome de cada:
 
-- **Usuários:** artur-hadoop, jose-hadoop, pablo-hadoop, phil-hadoop, victor-hadoop...
-- **Senhas:**  artur, jose, pablo, phil, victor...
+- **Usuários:** heitor-hadoop, jose-hadoop, pablo-hadoop, phil-hadoop, victor-hadoop...
+- **Senhas:**  heitor, jose, pablo, phil, victor...
 
 Pode deixar em branco (quando for solicitado) informaçoes como:
 - Full Name, Room Number, Work Phone, Home Phone, Other.
@@ -119,7 +119,7 @@ Edite o arquivo `~/.bashrc`:
 ```bash
 nano ~/.bashrc
 ```
-**Adicione no final do arquivo** e **reajuste** as seguintes linhas, de acordo com o seu caminho, lembre-se de substiruir o `jose-hadoop` pelo seu:
+**Adicione no final do arquivo** e **reajuste** as seguintes linhas, de acordo com o seu caminho:
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export HADOOP_HOME=/home/jose-hadoop/Downloads/hadoop
@@ -132,6 +132,8 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 ```
+> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
+
 Carregue/salve as configurações no seu ambiente:
 ```bash
 source ~/.bashrc
@@ -158,7 +160,7 @@ cd hadoop/
 ```bash
 mkdir -p /home/jose-hadoop/Downloads/hadoop/hadoopdata/hdfs/{namenode,datanode}
 ```
-Obs:. Lembre-se de substiruir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
 
 
 Agora Iremos configurar os arquivos:
@@ -206,7 +208,7 @@ Configure de acordo com o hostname do seu sistema:
     </property>
 </configuration>
 ```
-Obs:. Lembre-se de substiruir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
 
 Salve e feche o arquivo.
 
@@ -233,7 +235,7 @@ Configure de acordo com o hostname do seu sistema:
    </property>
 </configuration>
 ```
-Obs:. Lembre-se de substiruir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
 
 Salve e feche o arquivo.
 
@@ -292,8 +294,86 @@ Depois acesse, com o ip que está configurado:
 </br>
 </br>
 </br>
+</br>
+</br>
+
+---
+
+## 11. Verificando o Cluster Hadoop
+
+Agora que o Hadoop está instalado e configurado, podemos verificar seu funcionamento criando diretórios no HDFS.
+
+Crie os diretórios para teste:
+```bash
+hdfs dfs -mkdir /test1
+hdfs dfs -mkdir /logs
+```
+
+Liste os diretórios criados para confirmar:
+```bash
+hdfs dfs -ls /
+```
+
+Adicione arquivos ao HDFS, por exemplo, os logs do sistema:
+```bash
+hdfs dfs -put /var/log/* /logs/
+```
+
+Você pode visualizar os arquivos e diretórios adicionados através da interface web do Hadoop:
+
+1. Acesse a interface web do NameNode em [http://localhost:9870](http://localhost:9870).
+2. Navegue até `Utilities` > `Browse the file system`.
+3. Confirme se os diretórios `/test1` e `/logs` aparecem corretamente.
+
+
+---
+
+## 12. Desligar os serviços do Hadoop
+
+Para desligar todos os serviços do Hadoop corretamente, utilize o seguinte comando:
+```bash
+stop-all.sh
+```
+
+Depois, verifique se os processos do Hadoop foram finalizados:
+```bash
+jps
+```
+Se ainda houver processos em execução, finalize-os manualmente conforme necessário:
+```bash
+kill <PID>
+```
+> Substitua `<PID>` pelo número do processo, caso queira fazer a força coloque um `-9` antes, por exemplo `kill -9 12345`
+
+> Obs:. **NÃO** realize kill no processo `Jps`
+
+---
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
+---
+
+## 13. Extras (Opcional)
+
+Caso queira adicionar o usuário `jose-hadoop` ao grupo sudo para executar comandos administrativos, utilize:
+```bash
+sudo usermod -aG sudo jose-hadoop
+```
+> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
+
+Para ver mais estudos entre na pasta [testes-hadoop.md](testes-hadoop.md), onde exploramos testes com mapper e reducer usando Python.
+
+---
+
+</br>
+</br>
+</br>
 
 ## Referências
 
-1. **Tutorial Instalación Hadoop 3.3.6 en Ubuntu 24.04**. Gabriel Florit, [YouTube](https://www.youtube.com/watch?v=R7O3FKMg2GQ). Acesso em: 2 dias atrás.
-2. **Apache Hadoop 3.3.6 Installation on Ubuntu 22.04**. Abhik Dey, [Medium](https://medium.com/@abhikdey06/apache-hadoop-3-3-6-installation-on-ubuntu-22-04-14516bceec85). Acesso em: 2 dias atrás.
+1. **Tutorial Instalación Hadoop 3.3.6 en Ubuntu 24.04**. Gabriel Florit, [YouTube](https://www.youtube.com/watch?v=R7O3FKMg2GQ). Acesso em: 26/01/2025.
+2. **Apache Hadoop 3.3.6 Installation on Ubuntu 22.04**. Abhik Dey, [Medium](https://medium.com/@abhikdey06/apache-hadoop-3-3-6-installation-on-ubuntu-22-04-14516bceec85). Acesso em: 26/01/2025.

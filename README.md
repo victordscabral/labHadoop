@@ -5,7 +5,7 @@
 **Atividade**: Laboratório Hadoop
 
 ## Alunos Participantes
-- **Artur Vinícius Dias Nunes**: 190142421  
+- **Heitor Marques Simões Barbosa**: 202016462 
 - **José Luís Ramos Teixeira**: 190057858  
 - **Pablo Christianno Silva Guedes**: 200042416  
 - **Philipe de Sousa Barros**: 170154319  
@@ -61,8 +61,8 @@ Serão realizados os seguintes testes no cluster Hadoop:
 
 ## Referências
 
-1. **Tutorial Instalación Hadoop 3.3.6 en Ubuntu 24.04**. Gabriel Florit, [YouTube](https://www.youtube.com/watch?v=R7O3FKMg2GQ). Acesso em: 26/11/2025.
-2. **Apache Hadoop 3.3.6 Installation on Ubuntu 22.04**. Abhik Dey, [Medium](https://medium.com/@abhikdey06/apache-hadoop-3-3-6-installation-on-ubuntu-22-04-14516bceec85). Acesso em: 26/11/2025.
+1. **Tutorial Instalación Hadoop 3.3.6 en Ubuntu 24.04**. Gabriel Florit, [YouTube](https://www.youtube.com/watch?v=R7O3FKMg2GQ). Acesso em: 26/01/2025.
+2. **Apache Hadoop 3.3.6 Installation on Ubuntu 22.04**. Abhik Dey, [Medium](https://medium.com/@abhikdey06/apache-hadoop-3-3-6-installation-on-ubuntu-22-04-14516bceec85). Acesso em: 26/01/2025.
 
 ---
 
