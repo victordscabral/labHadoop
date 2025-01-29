@@ -359,13 +359,19 @@ kill <PID>
 
 ## 13. Extras (Opcional)
 
-Caso queira adicionar o usuário `jose-hadoop` ao grupo sudo para executar comandos administrativos, utilize:
+Caso queira adicionar o usuário `jose-hadoop` ao grupo sudo para executar comandos administrativos. Em um usuário com permissões `sudo` como o `root`, utilize:
 ```bash
 sudo usermod -aG sudo jose-hadoop
 ```
 > Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
 
-Para ver mais estudos entre na pasta [testes-hadoop.md](testes-hadoop.md), onde exploramos testes com mapper e reducer usando Python.
+Verifique se o usuário foi adicionado corretamente ao grupo `sudo`:
+```bash
+groups jose-hadoop
+```
+deve retornar algo como: `jose-hadoop : jose-hadoop sudo`
+
+Para ver mais estudos entre na pasta [testes-hadoop.md](testes-hadoop.md), onde exploramos testes com mapper e reducer usando Python e Java.
 
 ---
 
