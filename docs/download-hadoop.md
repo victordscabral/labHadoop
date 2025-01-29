@@ -51,19 +51,19 @@ sudo systemctl status ssh
 
 Crie um novo usuário para executar os serviços do Hadoop, vamos padronizar **(no nosso trabalho)** para ser o nome inicial de cada aluno, definindo a senha com o nome de cada:
 
-- **Usuários:** heitor-hadoop, jose-hadoop, pablo-hadoop, phil-hadoop, victor-hadoop...
-- **Senhas:**  heitor, jose, pablo, phil, victor...
+- **Usuários:** hadoopuser
+- **Senhas:**  hadoop
 
 Pode deixar em branco (quando for solicitado) informaçoes como:
 - Full Name, Room Number, Work Phone, Home Phone, Other.
 
 Atualizar de acordo:
 ```bash
-sudo adduser jose-hadoop
+sudo adduser hadoopuser
 ```
 Troque para o novo usuário:
 ```bash
-su - jose-hadoop
+su - hadoopuser
 ```
 
 ---
@@ -93,7 +93,7 @@ Primeiro crie uma pasta onde será instalado o hadoop, e entre nela. Por exemplo
 mkdir Downloads
 ```
 ```bash
-cd /home/jose-hadoop/Downloads
+cd /home/hadoopuser/Downloads
 ```
 
 Dentro dela faça a instalação do hadoop:
@@ -122,7 +122,7 @@ nano ~/.bashrc
 **Adicione no final do arquivo** e **reajuste** as seguintes linhas, de acordo com o seu caminho:
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export HADOOP_HOME=/home/jose-hadoop/Downloads/hadoop
+export HADOOP_HOME=/home/hadoopuser/Downloads/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -132,7 +132,7 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 ```
-> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Carregue/salve as configurações no seu ambiente:
 ```bash
@@ -158,9 +158,9 @@ Primeiro vamos criar os diretórios para **namenode** e **datanode**:
 cd hadoop/
 ```
 ```bash
-mkdir -p /home/jose-hadoop/Downloads/hadoop/hadoopdata/hdfs/{namenode,datanode}
+mkdir -p /home/hadoopuser/Downloads/hadoop/hadoopdata/hdfs/{namenode,datanode}
 ```
-> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 
 Agora Iremos configurar os arquivos:
@@ -200,15 +200,15 @@ Configure de acordo com o hostname do seu sistema:
     </property>
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>file:///home/jose-hadoop/Downloads/hadoop/hadoopdata/hdfs/namenode</value>
+        <value>file:///home/hadoopuser/Downloads/hadoop/hadoopdata/hdfs/namenode</value>
     </property>
     <property>
         <name>dfs.datanode.data.dir</name>
-        <value>file:///home/jose-hadoop/Downloads/hadoop/hadoopdata/hdfs/datanode</value>
+        <value>file:///home/hadoopuser/Downloads/hadoop/hadoopdata/hdfs/datanode</value>
     </property>
 </configuration>
 ```
-> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Salve e feche o arquivo.
 
@@ -223,19 +223,19 @@ Configure de acordo com o hostname do seu sistema:
 <configuration>
    <property>
       <name>yarn.app.mapreduce.am.env</name>
-      <value>HADOOP_MAPRED_HOME=/home/jose-hadoop/Downloads/hadoop/bin/hadoop</value>
+      <value>HADOOP_MAPRED_HOME=/home/hadoopuser/Downloads/hadoop/bin/hadoop</value>
    </property>
    <property>
       <name>mapreduce.map.env</name>
-      <value>HADOOP_MAPRED_HOME=/home/jose-hadoop/Downloads/hadoop/bin/hadoop</value>
+      <value>HADOOP_MAPRED_HOME=/home/hadoopuser/Downloads/hadoop/bin/hadoop</value>
    </property>
    <property>
       <name>mapreduce.reduce.env</name>
-      <value>HADOOP_MAPRED_HOME=/home/jose-hadoop/Downloads/hadoop/bin/hadoop</value>
+      <value>HADOOP_MAPRED_HOME=/home/hadoopuser/Downloads/hadoop/bin/hadoop</value>
    </property>
 </configuration>
 ```
-> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Salve e feche o arquivo.
 
@@ -359,17 +359,17 @@ kill <PID>
 
 ## 13. Extras (Opcional)
 
-Caso queira adicionar o usuário `jose-hadoop` ao grupo sudo para executar comandos administrativos. Em um usuário com permissões `sudo` como o `root`, utilize:
+Caso queira adicionar o usuário `hadoopuser` ao grupo sudo para executar comandos administrativos. Em um usuário com permissões `sudo` como o `root`, utilize:
 ```bash
-sudo usermod -aG sudo jose-hadoop
+sudo usermod -aG sudo hadoopuser
 ```
-> Obs:. Lembre-se de substituir o `jose-hadoop` pelo seu.
+> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Verifique se o usuário foi adicionado corretamente ao grupo `sudo`:
 ```bash
-groups jose-hadoop
+groups hadoopuser
 ```
-deve retornar algo como: `jose-hadoop : jose-hadoop sudo`
+deve retornar algo como: `hadoopuser : hadoopuser sudo`
 
 Para ver mais estudos entre na pasta [testes-hadoop.md](testes-hadoop.md), onde exploramos testes com mapper e reducer usando Python e Java.
 
