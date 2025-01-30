@@ -16,7 +16,7 @@ O Hadoop adota um mecanismo de tolerância a falhas baseado na reexecução de t
 
 ### Configuração do experimento realizado
 
-Para a pesquisa analisada, um cluster Hadoop foi implantado utilizando 5 nós. Cada nó consistia em uma máquina virtual com 3 núcleos de CPU e 2 GB de memória, conforme mostrado na Tabela II. O Hadoop 2.7.4 foi executado com a configuração padrão no CentOS Linux. No cluster, um nó foi designado como mestre, responsável pelos processos JobTracker e NameNode, enquanto os demais atuaram como nós escravos, executando os processos DataNode e TaskTracker. Os TaskTrackers foram configurados com 8 slots para tarefas de mapeamento e 4 slots para tarefas de redução. O Hadoop Distributed File System (HDFS) utilizou um tamanho de bloco de 128 MB, e o fator de replicação foi definido como 2 para os dados de entrada e saída.
+Para a pesquisa analisada, um cluster Hadoop foi implantado utilizando 5 nós. Cada nó consistia em uma máquina virtual com 3 núcleos de CPU e 2 GB de memória. O Hadoop 2.7.4 foi executado com a configuração padrão no CentOS Linux. No cluster, um nó foi designado como mestre, responsável pelos processos JobTracker e NameNode, enquanto os demais atuaram como nós escravos, executando os processos DataNode e TaskTracker. Os TaskTrackers foram configurados com 8 slots para tarefas de mapeamento e 4 slots para tarefas de redução. O Hadoop Distributed File System (HDFS) utilizou um tamanho de bloco de 128 MB, e o fator de replicação foi definido como 2 para os dados de entrada e saída.
 
 ### Injeção de Falhas
 
@@ -32,7 +32,7 @@ As cargas de trabalho utilizadas pela ferramenta MRBS representam diferentes tip
 
 ### Impacto de Falhas
 
-Estudos anteriores investigaram o impacto de diferentes tipos de falhas no desempenho de clusters Hadoop. Em um experimento conduzido em um cluster de 5 nós executando uma carga de trabalho de Processamento de Texto de 10 GB, foram analisados os tempos de resposta para os trabalhos **WordCount** e **Sort**, considerando a injeção de falhas controladas.
+No estudo revisado, foi investigado o impacto de diferentes tipos de falhas no desempenho de clusters Hadoop. Em um experimento conduzido em um cluster de 5 nós executando uma carga de trabalho de Processamento de Texto de 10 GB, foram analisados os tempos de resposta para os trabalhos **WordCount** e **Sort**, considerando a injeção de falhas controladas.
 
 A imagem abaixo compara o tempo de resposta para cada tipo de falha para cada aplicação:
 
@@ -40,7 +40,7 @@ A imagem abaixo compara o tempo de resposta para cada tipo de falha para cada ap
 
 ### Experimentos Relatados na Literatura
 
-Estudos anteriores relataram experimentos sobre tolerância a falhas em clusters Hadoop. No primeiro experimento analisado, um cluster Hadoop de 5 nós foi executado com uma carga de trabalho de Processamento de Texto de 10 GB. Os resultados mostraram que o impacto no tempo de resposta dos trabalhos MapReduce depende do tipo de falha.
+ No primeiro experimento analisado, um cluster Hadoop de 5 nós foi executado com uma carga de trabalho de Processamento de Texto de 10 GB. Os resultados mostraram que o impacto no tempo de resposta dos trabalhos MapReduce depende do tipo de falha.
 
 O estudo analisado apresenta o tempo de resposta dos trabalhos *WordCount* e *Sort* sob diferentes falhas injetadas. O eixo x representa os diferentes tipos de falha, enquanto o eixo y mostra o tempo total de resposta. Os trabalhos foram executados sem falhas para estabelecer uma linha de base, onde *WordCount* levou aproximadamente 970 segundos e *Sort* cerca de 760 segundos.
 
@@ -54,9 +54,6 @@ Na imagem a seguir podemos perceber o comportamento do sistema para diferente qu
 - **Falha de rede lenta**: Os pacotes de rede foram atrasados por alguns segundos, impactando o tempo de resposta das tarefas.
 - **Falha de processo de tarefa**: Uma falha de tarefa foi simulada chamando a função `system.exit()` no código da aplicação, causando um impacto mais significativo.
 
-Na imagem a seguir evidencia o tempo de resposta quando uma falha de processo ocorre de acordo com a variação no tamanho dos dados:
-
-![task](../imgs/taskfail.png)
 
 - **Falha por perda de pacotes**: Uma porcentagem de pacotes foi descartada em vários nós, afetando especialmente a aplicação *Sort*, que depende mais da comunicação em rede.
 
@@ -73,6 +70,10 @@ O estudo mostra que a Hadoop pode tolerar até três falhas de nós ao executar 
 ### Impacto do Tamanho da Divisão de Entrada (*Split-Size*)
 
 Em outro experimento, foi analisado o impacto do tamanho da divisão de entrada no tempo de resposta do *WordCount* sob taxas de falha de 11% e 25%. O estudo indica que o melhor tempo de resposta foi alcançado quando o tamanho da divisão foi de 128 MB, que corresponde ao tamanho padrão de um bloco HDFS.
+
+Na imagem a seguir evidencia o tempo de resposta quando uma falha de processo ocorre de acordo com a variação no tamanho dos dados:
+
+![task](../imgs/taskfail.png)
 
 Quando o tamanho da divisão foi maior que 128 MB, o tempo de resposta aumentou, pois tamanhos maiores exigem mais *mappers* para acessar os dados, aumentando o tempo de execução. O estudo mostrou que falhas de tarefas causam um impacto maior no tempo de execução quando o tamanho da divisão é grande, pois menos nós estão disponíveis para reexecutar as tarefas falhas.
 
