@@ -16,7 +16,7 @@ sudo apt update && sudo apt upgrade -y
 
 ---
 
-## 2. Instalação do Java 8
+## 2. Instalação do Java 8 e PDSH
 
 O Hadoop exige o Java 8 para funcionar corretamente.
 
@@ -28,6 +28,11 @@ Verifique a instalação:
 java -version
 ```
 O comando deve exibir uma versão do Java 8, como por exemplo `openjdk version "1.8.0_432"`.
+
+O PDSH (Parallel Distributed Shell) permite executar comandos simultaneamente em vários nós do cluster, facilitando a administração do Hadoop, como iniciar ou parar serviços em múltiplas máquinas.
+```bash
+sudo apt install pdsh -y
+```
 
 ---
 
@@ -121,6 +126,7 @@ nano ~/.bashrc
 ```
 **Adicione no final do arquivo** e **reajuste** as seguintes linhas, de acordo com o seu caminho:
 ```bash
+export PDSH_RCMD_TYPE=ssh
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export HADOOP_HOME=/home/hadoopuser/Downloads/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
@@ -132,7 +138,6 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 ```
-> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Carregue/salve as configurações no seu ambiente:
 ```bash
@@ -160,8 +165,6 @@ cd hadoop/
 ```bash
 mkdir -p /home/hadoopuser/Downloads/hadoop/hadoopdata/hdfs/{namenode,datanode}
 ```
-> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
-
 
 Agora Iremos configurar os arquivos:
 
@@ -208,7 +211,6 @@ Configure de acordo com o hostname do seu sistema:
     </property>
 </configuration>
 ```
-> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Salve e feche o arquivo.
 
@@ -235,7 +237,6 @@ Configure de acordo com o hostname do seu sistema:
    </property>
 </configuration>
 ```
-> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Salve e feche o arquivo.
 
@@ -258,9 +259,67 @@ Salve e feche o arquivo.
 
 </br>
 
+### 8.5. Editar o arquivo de Workers
+
+1. No **master** (`hadoop-master`), abra o arquivo `workers`:
+   ```bash
+   sudo nano /home/hadoopuser/Downloads/hadoop/etc/hadoop/workers
+   ```
+
+2. Adicione os nomes dos workers:
+   ```plaintext
+   hadoop-slave1
+   hadoop-slave2
+   ```
+
+3. Salve o arquivo (`CTRL + X`, `Y`, `ENTER`).
+
+4. Certifique-se de que o arquivo `/etc/hosts` também esteja configurado corretamente em todas as máquinas.
+
+</br>
+
 ---
 
-## 9. Inicialização do Hadoop
+## 9. Configuração de Hosts e Nomes das Máquinas
+
+1. **Editar o arquivo `/etc/hosts` em todas as máquinas:**
+   ```bash
+   sudo nano /etc/hosts
+   ```
+
+   Adicione as seguintes entradas:
+   ```plaintext
+   192.168.0.10 hadoop-master
+   192.168.0.11 hadoop-slave1
+   192.168.0.12 hadoop-slave2
+   ```
+
+2. **Definir o nome de cada máquina:**
+   Em cada máquina, edite o arquivo `/etc/hostname`:
+
+   - No **master** (`hadoop-master`):  
+     ```bash
+     sudo nano /etc/hostname
+     ```
+   
+   - No **slave1** (`hadoop-slave1`):  
+     ```bash
+     sudo nano /etc/hostname
+     ```
+   
+   - No **slave2** (`hadoop-slave2`):  
+     ```bash
+     sudo nano /etc/hostname
+     ```
+
+3. **Reinicie as máquinas:**
+   ```bash
+   sudo reboot
+   ```
+
+---
+
+## 10. Inicialização do Hadoop
 
 1. Formate o NameNode:
    ```bash
@@ -277,7 +336,7 @@ Salve e feche o arquivo.
 
 ---
 
-## 10. Acesso à Interface Web
+## 11. Acesso à Interface Web
 
 Primeiro veja o ip que está usando local:
 ```bash
@@ -299,7 +358,7 @@ Depois acesse, com o ip que está configurado:
 
 ---
 
-## 11. Verificando o Cluster Hadoop
+## 12. Verificando o Cluster Hadoop
 
 Agora que o Hadoop está instalado e configurado, podemos verificar seu funcionamento criando diretórios no HDFS.
 
@@ -328,7 +387,7 @@ Você pode visualizar os arquivos e diretórios adicionados através da interfac
 
 ---
 
-## 12. Desligar os serviços do Hadoop
+## 13. Desligar os serviços do Hadoop
 
 Para desligar todos os serviços do Hadoop corretamente, utilize o seguinte comando:
 ```bash
@@ -357,13 +416,12 @@ kill <PID>
 
 ---
 
-## 13. Extras (Opcional)
+## 14. Extras (Opcional)
 
 Caso queira adicionar o usuário `hadoopuser` ao grupo sudo para executar comandos administrativos. Em um usuário com permissões `sudo` como o `root`, utilize:
 ```bash
 sudo usermod -aG sudo hadoopuser
 ```
-> Obs:. Lembre-se de substituir o `hadoopuser` pelo seu.
 
 Verifique se o usuário foi adicionado corretamente ao grupo `sudo`:
 ```bash
