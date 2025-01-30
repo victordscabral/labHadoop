@@ -16,13 +16,11 @@
 </br>
 </br>
 
-## 1. Objetivo
+## 1. Introdução
 
-O objetivo deste trabalho é implementar um laboratório utilizando o Apache Hadoop para:
+Este projeto tem como objetivo a implementação de um cluster básico utilizando o Apache Hadoop, com foco no processamento distribuído de dados por meio do paradigma MapReduce. A atividade envolveu a configuração de um cluster com um nó mestre e dois ou mais nós workers, além de testes de desempenho e tolerância a falhas para garantir a resiliência do sistema. O Hadoop, sendo uma ferramenta fundamental em sistemas distribuídos, foi utilizado para explorar conceitos de escalabilidade, resiliência e performance.
 
-- **Configurar e monitorar um cluster Hadoop básico**, composto por um nó mestre e, no mínimo, dois nós workers.
-- **Testar a tolerância a falhas do Hadoop**, incluindo remoção e adição de nós no cluster, e analisar os impactos na performance das aplicações.
-- **Realizar testes de desempenho com a aplicação WordCount** (paradigma MapReduce), utilizando massas de dados que garantam uma execução suficientemente longa para monitoramento adequado.
+Neste documento encontra-se detalhes sobre as etapas da configuração, os testes realizados, os resultados observados, além das considerações sobre a instalação e o funcionamento do cluster. A metodologia adotada, os desafios enfrentados e as lições aprendidas ao longo do experimento também são discutidos. Ao final, cada integrante do grupo irá compartilhar suas conclusões e autoavaliações.
 
 Mais detalhes podem ser encontrados no documento oficial do trabalho: [Atividade extra-classe – Laboratório Hadoop](docs/PSPD_LabClusterHadoop.pdf).
 
@@ -64,6 +62,14 @@ Para testes no cluster em execução, acesse: [Testes no Cluster Hadoop](docs/te
 </br>
 </br>
 </br>
+
+## 5. Conclusão
+
+A implementação do cluster Hadoop permitiu explorar conceitos fundamentais de processamento distribuído e escalabilidade em sistemas paralelos. Durante a atividade, realizamos a instalação e configuração do ambiente, além da tentativa de execução de testes para validar o desempenho e a resiliência do cluster.
+
+Os resultados obtidos mostraram que o Hadoop é uma ferramenta poderosa para manipulação de grandes volumes de dados, sendo capaz de distribuir o processamento de maneira eficiente entre os nós.Ao longo do projeto, enfrentamos desafios relacionados à configuração da rede, permissões do sistema e compatibilidade entre versões do software, o que exigiu um aprofundamento no entendimento do funcionamento interno do Hadoop. A experiência adquirida contribuiu significativamente para a nossa compreensão sobre sistemas distribuídos e a importância da configuração adequada para garantir o desempenho esperado.
+
+Dessa forma, esta atividade proporcionou um aprendizado prático essencial, preparando-nos para desafios futuros no desenvolvimento e manutenção de sistemas paralelos e distribuídos.
 
 ## Referências
 
