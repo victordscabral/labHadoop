@@ -6,6 +6,10 @@ Este documento explica como configurar a rede para permitir a comunicação entr
 
 A rede foi montada com o host master ao centro e ao seu lado direito e esquerdo os hosts identificados como slave1 e slave2 conectados a um switch
 
+Imagem da Rede montada:
+
+![Cluster](../imgs/cluster.jpg)
+
 ## 1. Equipamentos Utilizados
 
 - **Switch 8 Portas Fast Ethernet SF 800** ([Link do produto](https://www.amazon.com.br/dp/B075JQJCPH))
